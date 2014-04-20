@@ -18,7 +18,7 @@ class AuthCommonUserAuthCommonRole implements Serializable {
     }
 
     other.authCommonUser?.id == authCommonUser?.id &&
-      other.authCommonRole?.id == authCommonRole?.id
+    other.authCommonRole?.id == authCommonRole?.id
   }
 
   int hashCode() {

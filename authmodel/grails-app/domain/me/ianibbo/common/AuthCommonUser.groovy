@@ -27,7 +27,7 @@ class AuthCommonUser extends AuthCommonParty {
   }
 
   Set<AuthCommonRole> getAuthorities() {
-    AuthCommonUserAuthCommonRole.findAllByAuthCommonUser(this).collect { it.AuthCommonRole } as Set
+    AuthCommonUserAuthCommonRole.findAllByAuthCommonUser(this).collect { it.authCommonRole } as Set
   }
 
   def beforeInsert() {
