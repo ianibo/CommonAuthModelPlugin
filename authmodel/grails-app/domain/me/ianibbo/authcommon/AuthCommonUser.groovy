@@ -18,10 +18,6 @@ class AuthCommonUser extends AuthCommonParty {
     password blank: false
   }
 
-  // static mapping = {
-  //   table name:, schema:'', catalog:''
-  // }
-
   static hasMany = [
     oAuthIDs : AuthCommonOAuthId
   ]

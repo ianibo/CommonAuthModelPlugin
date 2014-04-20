@@ -13,7 +13,7 @@ class AuthmodelGrailsPlugin {
     def author = "Your name"
     def authorEmail = ""
     def description = '''\
-Brief summary/description of the plugin.
+Shared authentication domain model
 '''
 
     // URL to the plugin's documentation

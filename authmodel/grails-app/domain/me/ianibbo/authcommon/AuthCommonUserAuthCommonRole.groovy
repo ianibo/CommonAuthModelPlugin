@@ -4,62 +4,66 @@ import org.apache.commons.lang.builder.HashCodeBuilder
 
 class AuthCommonUserAuthCommonRole implements Serializable {
 
-	private static final long serialVersionUID = 1
+  private static final long serialVersionUID = 1
 
-	AuthCommonUser authCommonUser
-	AuthCommonRole authCommonRole
+  AuthCommonUser authCommonUser
+  AuthCommonRole authCommonRole
 
-	boolean equals(other) {
-		if (!(other instanceof AuthCommonUserAuthCommonRole)) {
-			return false
-		}
 
-		other.authCommonUser?.id == authCommonUser?.id &&
-			other.authCommonRole?.id == authCommonRole?.id
-	}
 
-	int hashCode() {
-		def builder = new HashCodeBuilder()
-		if (authCommonUser) builder.append(authCommonUser.id)
-		if (authCommonRole) builder.append(authCommonRole.id)
-		builder.toHashCode()
-	}
 
-	static AuthCommonUserAuthCommonRole get(long authCommonUserId, long authCommonRoleId) {
-		AuthCommonUserAuthCommonRole.where {
-			authCommonUser == AuthCommonUser.load(authCommonUserId) &&
-			authCommonRole == AuthCommonRole.load(authCommonRoleId)
-		}.get()
-	}
+  boolean equals(other) {
+    if (!(other instanceof AuthCommonUserAuthCommonRole)) {
+      return false
+    }
 
-	static AuthCommonUserAuthCommonRole create(AuthCommonUser authCommonUser, AuthCommonRole authCommonRole, boolean flush = false) {
-		new AuthCommonUserAuthCommonRole(authCommonUser: authCommonUser, authCommonRole: authCommonRole).save(flush: flush, insert: true)
-	}
+    other.authCommonUser?.id == authCommonUser?.id &&
+      other.authCommonRole?.id == authCommonRole?.id
+  }
 
-	static boolean remove(AuthCommonUser u, AuthCommonRole r, boolean flush = false) {
+  int hashCode() {
+    def builder = new HashCodeBuilder()
+    if (authCommonUser) builder.append(authCommonUser.id)
+    if (authCommonRole) builder.append(authCommonRole.id)
+    builder.toHashCode()
+  }
 
-		int rowCount = AuthCommonUserAuthCommonRole.where {
-			authCommonUser == AuthCommonUser.load(u.id) &&
-			authCommonRole == AuthCommonRole.load(r.id)
-		}.deleteAll()
+  static AuthCommonUserAuthCommonRole get(long authCommonUserId, long authCommonRoleId) {
+    AuthCommonUserAuthCommonRole.where {
+      authCommonUser == AuthCommonUser.load(authCommonUserId) &&
+      authCommonRole == AuthCommonRole.load(authCommonRoleId)
+    }.get()
+  }
 
-		rowCount > 0
-	}
+  static AuthCommonUserAuthCommonRole create(AuthCommonUser authCommonUser, AuthCommonRole authCommonRole, boolean flush = false) {
+    new AuthCommonUserAuthCommonRole(authCommonUser: authCommonUser, authCommonRole: authCommonRole).save(flush: flush, insert: true)
+  }
 
-	static void removeAll(AuthCommonUser u) {
-		AuthCommonUserAuthCommonRole.where {
-			authCommonUser == AuthCommonUser.load(u.id)
-		}.deleteAll()
-	}
+  static boolean remove(AuthCommonUser u, AuthCommonRole r, boolean flush = false) {
 
-	static void removeAll(AuthCommonRole r) {
-		AuthCommonUserAuthCommonRole.where {
-			authCommonRole == AuthCommonRole.load(r.id)
-		}.deleteAll()
-	}
+    int rowCount = AuthCommonUserAuthCommonRole.where {
+      authCommonUser == AuthCommonUser.load(u.id) &&
+      authCommonRole == AuthCommonRole.load(r.id)
+    }.deleteAll()
 
-	static mapping = {
-		id composite: ['authCommonRole', 'authCommonUser']
-		version false
-	}
+    rowCount > 0
+  }
+
+  static void removeAll(AuthCommonUser u) {
+    AuthCommonUserAuthCommonRole.where {
+      authCommonUser == AuthCommonUser.load(u.id)
+    }.deleteAll()
+  }
+
+  static void removeAll(AuthCommonRole r) {
+    AuthCommonUserAuthCommonRole.where {
+      authCommonRole == AuthCommonRole.load(r.id)
+    }.deleteAll()
+  }
+
+  static mapping = {
+    table name:'auth_common_user_role', schema:'auth', catalog:'auth'
+    id composite: ['authCommonRole', 'authCommonUser']
+    version false
+  }
 }
