@@ -34,10 +34,6 @@ class AuthCommonOAuthId implements Serializable {
 
   static mapping = {
     table name:'auth_common_oauth_id', schema:'auth', catalog:'auth'
-  }
-
-
-  static mapping = {
     provider    index: "identity_idx"
     accessToken index: "identity_idx"
   }
