@@ -9,7 +9,7 @@ class AuthCommonParty {
   }
 
   static constraints = {
-    displayName blank: false, unique: true
+    displayName blank: true, unique: true
   }
 
 }
