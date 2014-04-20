@@ -14,7 +14,7 @@ class RefdataValue {
   ]
 
   static mapping = {
-    table name:'refdata_value', schema:'common', catalog:'common'
+    table name:'refdata_value', schema:'common'
     id column:'rdv_id'
     version column:'rdv_version'
     owner column:'rdv_owner', index:'rdv_entry_idx,rdv_term_id_idx'

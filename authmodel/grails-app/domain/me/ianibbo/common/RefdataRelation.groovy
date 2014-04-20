@@ -10,7 +10,7 @@ class RefdataRelation {
   ]
 
   static mapping = {
-           table name:'refdata_relation', schema:'common', catalog:'common'
+           table name:'refdata_relation', schema:'common'
               id column:'rdr_id'
          version column:'rdr_version'
        fromValue column:'rdr_from_value_fk', index:'rdr_rel_idx'

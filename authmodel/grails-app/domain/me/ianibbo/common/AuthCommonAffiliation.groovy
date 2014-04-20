@@ -10,7 +10,7 @@ class AuthCommonAffiliation {
   RefdataValue role  // 0=unspecified, 5=admin
 
   static mapping = {
-    table name:'auth_common_affiliation', schema:'common', catalog:'common'
+    table name:'auth_common_affiliation', schema:'common'
   }
 
   static constraints = {

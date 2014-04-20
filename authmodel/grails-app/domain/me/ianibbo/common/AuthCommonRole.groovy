@@ -5,7 +5,7 @@ class AuthCommonRole {
   String authority
 
   static mapping = {
-    table name:'auth_common_role', schema:'common', catalog:'common'
+    table name:'auth_common_role', schema:'common'
     cache true
   }
 

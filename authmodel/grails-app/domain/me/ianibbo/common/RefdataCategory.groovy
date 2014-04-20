@@ -8,7 +8,7 @@ class RefdataCategory {
   RefdataValue catType
 
   static mapping = {
-      table name:'refdata_category', schema:'common', catalog:'common'
+      table name:'refdata_category', schema:'common'
          id column:'rdc_id'
        code column:'rdc_code'
     version column:'rdc_version'

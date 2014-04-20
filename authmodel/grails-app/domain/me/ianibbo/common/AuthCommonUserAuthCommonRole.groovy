@@ -62,7 +62,7 @@ class AuthCommonUserAuthCommonRole implements Serializable {
   }
 
   static mapping = {
-    table name:'auth_common_user_role', schema:'common', catalog:'common'
+    table name:'auth_common_user_role', schema:'common'
     id composite: ['authCommonRole', 'authCommonUser']
     version false
   }
