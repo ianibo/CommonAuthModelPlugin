@@ -1,4 +1,4 @@
-package me.ianibbo.authcommon;
+package me.ianibbo.common;
 
 import org.apache.commons.lang.builder.HashCodeBuilder
 
@@ -62,7 +62,7 @@ class AuthCommonUserAuthCommonRole implements Serializable {
   }
 
   static mapping = {
-    table name:'auth_common_user_role', schema:'auth', catalog:'auth'
+    table name:'auth_common_user_role', schema:'common', catalog:'common'
     id composite: ['authCommonRole', 'authCommonUser']
     version false
   }

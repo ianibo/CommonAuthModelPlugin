@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package me.ianibbo.authcommon
+package me.ianibbo.common
 
 /**
  * Simple domain class that records the identities of users authenticating via
@@ -33,7 +33,7 @@ class AuthCommonOAuthId implements Serializable {
   }
 
   static mapping = {
-    table name:'auth_common_oauth_id', schema:'auth', catalog:'auth'
+    table name:'auth_common_oauth_id', schema:'common', catalog:'common'
     provider    index: "identity_idx"
     accessToken index: "identity_idx"
   }

@@ -2,7 +2,7 @@ package me.ianibbo.authcommon
 
 class AuthCommonOrganisation extends AuthCommonParty {
 
-  // RefdataValue status
+  RefdataValue status
   String shortcode
   String url
 

@@ -1,4 +1,4 @@
-package me.ianibbo.authcommon
+package me.ianibbo.common
 
 class AuthCommonUser extends AuthCommonParty {
 
