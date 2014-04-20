@@ -8,6 +8,12 @@ class AuthCommonRole {
     cache true
   }
 
+  static mapping = {
+    table name:'auth_common_role', schema:'auth', catalog:'auth'
+  }
+
+
+
   static constraints = {
     authority blank: false, unique: true
   }

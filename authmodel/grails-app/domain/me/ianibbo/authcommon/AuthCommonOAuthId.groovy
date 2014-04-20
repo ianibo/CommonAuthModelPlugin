@@ -23,18 +23,23 @@ package me.ianibbo.authcommon
  */
 class AuthCommonOAuthId implements Serializable {
 
-    String provider
-    String accessToken
+  String provider
+  String accessToken
 
-    static belongsTo = [user: AuthCommonUser]
+  static belongsTo = [user: AuthCommonUser]
 
-    static constraints = {
-        accessToken unique: true
-    }
+  static constraints = {
+    accessToken unique: true
+  }
 
-    static mapping = {
-        provider    index: "identity_idx"
-        accessToken index: "identity_idx"
-    }
+  static mapping = {
+    table name:'auth_common_oauth_id', schema:'auth', catalog:'auth'
+  }
+
+
+  static mapping = {
+    provider    index: "identity_idx"
+    accessToken index: "identity_idx"
+  }
 
 }

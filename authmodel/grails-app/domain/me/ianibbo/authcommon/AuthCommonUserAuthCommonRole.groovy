@@ -9,6 +9,12 @@ class AuthCommonUserAuthCommonRole implements Serializable {
 	AuthCommonUser authCommonUser
 	AuthCommonRole authCommonRole
 
+  static mapping = {
+    table name:'auth_common_user_role', schema:'auth', catalog:'auth'
+  }
+
+
+
 	boolean equals(other) {
 		if (!(other instanceof AuthCommonUserAuthCommonRole)) {
 			return false
