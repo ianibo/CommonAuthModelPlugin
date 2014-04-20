@@ -31,6 +31,9 @@ class AuthCommonUser extends AuthCommonParty {
   }
 
   def beforeInsert() {
+    if ( displayName == null ) {
+      displayName = username;
+    }
     encodePassword()
   }
 
