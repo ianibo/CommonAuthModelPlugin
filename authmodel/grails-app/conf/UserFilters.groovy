@@ -1,7 +1,7 @@
 import me.ianibbo.common.*
 
 
-class PreferencesFilters {
+class UserFilters {
    
   def springSecurityService
 
