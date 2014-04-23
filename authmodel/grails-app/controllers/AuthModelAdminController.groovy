@@ -30,14 +30,14 @@ class AuthModelAdminController {
           if ( first ) {
             first = false; // Skip header
             // Expected cols
-            // [0]Name,[1]Short name,[2]URL name,[3]Tags,[4]Home page,Publication scheme,Disclosure log,Notes,Created at,Updated at,Version
+            // [0]Name,[1]Short name,[2]URL name,[3]Tags,[4]Home page,[5]Publication scheme,Disclosure log,[7]Notes,Created at,Updated at,Version
 
           }
           else {
-            def shortcode = nl[1]
+            def shortcode = nl[2]
             AuthCommonOrganisation aco = AuthCommonOrganisation.findByShortcode(shortcode)
             if ( aco == null ) {
-              aco = new AuthCommonOrganisation(status:current_org, shortcode:shortcode, url:nl[4], displayName:nl[0]).save();
+              aco = new AuthCommonOrganisation(status:current_org, shortcode:shortcode, url:nl[4], displayName:nl[0], notes:nl[7], pubScheme:nl[7]).save();
             }
           }
         }

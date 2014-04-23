@@ -5,11 +5,17 @@ class AuthCommonOrganisation extends AuthCommonParty {
   RefdataValue status
   String shortcode
   String url
+  String pubScheme
 
   static constraints = {
     status(nullable:false, blank:false)
     shortcode(nullable:false, blank:false, unique:true)
     url(nullable:true, blank:false)
+    pubScheme(nullable:true, blank:true)
+  }
+
+  static mapping = {
+    pubScheme type:'text'
   }
 
   static def refdataFind(params) {
