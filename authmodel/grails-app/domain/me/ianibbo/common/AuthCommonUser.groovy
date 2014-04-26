@@ -19,11 +19,11 @@ class AuthCommonUser extends AuthCommonParty {
   static transients = ['springSecurityService']
 
   static constraints = {
-    username ( blank: false, unique: true )
-    password ( blank: false, nullable:false )
-    defaultPageSize( blank: false, nullable:true)
-    showQuickView( blank: false, nullable:true)
-    showInfoItem( blank: false, nullable:true)
+    username blank: false, unique: true
+    password blank: false, nullable:false
+    defaultPageSize blank: false, nullable:true
+    showQuickView blank: false, nullable:true
+    showInfoIcon blank: false, nullable:true
   }
 
   static hasMany = [
