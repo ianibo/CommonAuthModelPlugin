@@ -10,12 +10,19 @@ class AuthCommonUser extends AuthCommonParty {
   boolean accountExpired
   boolean accountLocked
   boolean passwordExpired
+  Long defaultPageSize = new Long(10);
+  RefdataValue showQuickView
+  RefdataValue showInfoIcon
+
 
   static transients = ['springSecurityService']
 
   static constraints = {
     username blank: false, unique: true
     password blank: false
+    defaultPageSize blank: false, nullable:true
+    showQuickView blank: false, nullable:true
+    showInfoItem blank: false, nullable:true
   }
 
   static hasMany = [

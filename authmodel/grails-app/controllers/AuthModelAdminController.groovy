@@ -27,21 +27,26 @@ class AuthModelAdminController {
         String[] nl;
         def first = true
         while ((nl = r.readNext()) != null) {
-          if ( first ) {
-            first = false; // Skip header
-            // Expected cols
-            // [0]Name,[1]Short name,[2]URL name,[3]Tags,[4]Home page,[5]Publication scheme,Disclosure log,[7]Notes,Created at,Updated at,Version
-
-          }
-          else {
-            def shortcode = nl[2]
-            AuthCommonOrganisation aco = AuthCommonOrganisation.findByShortcode(shortcode)
-            if ( aco == null ) {
-              aco = new AuthCommonOrganisation(status:current_org, shortcode:shortcode, url:nl[4], displayName:nl[0], notes:nl[7], pubScheme:nl[7]).save();
+          try {
+            log.debug("Process line ${nl}");
+            if ( first ) {
+              first = false; // Skip header
+              // Expected cols
+              // [0]Name,[1]Short name,[2]URL name,[3]Tags,[4]Home page,[5]Publication scheme,Disclosure log,[7]Notes,Created at,Updated at,Version
+  
+            }
+            else {
+              def shortcode = nl[2]
+              AuthCommonOrganisation aco = AuthCommonOrganisation.findByShortcode(shortcode)
+              if ( aco == null ) {
+                aco = new AuthCommonOrganisation(status:current_org, shortcode:shortcode, url:nl[4], displayName:nl[0], notes:nl[7], pubScheme:nl[7]).save();
+              }
             }
           }
+          catch ( Exception e ) {
+            log.error("Problem",e);
+          }
         }
-
       }
     }
     catch ( Exception e ) {
