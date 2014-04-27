@@ -38,6 +38,8 @@ class RefdataCategory {
 
   static RefdataValue lookupOrCreate(category_name, value, sortkey) {
 	
+    def result = null;
+
     if ( value == null )
       throw new RuntimeException("Request to lookupOrCreate null value in category ${category_name}");
 
@@ -49,7 +51,7 @@ class RefdataCategory {
         cat.save(failOnError:true)
       }
 
-      def result = RefdataValue.findByOwnerAndValueIlike(cat, value)
+      result = RefdataValue.findByOwnerAndValueIlike(cat, value)
 	
       if ( !result ) {
 	// Create and save a new refdata value.
