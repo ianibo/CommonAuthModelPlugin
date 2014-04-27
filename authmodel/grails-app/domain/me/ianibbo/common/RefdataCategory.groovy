@@ -41,29 +41,25 @@ class RefdataCategory {
     if ( value == null )
       throw new RuntimeException("Request to lookupOrCreate null value in category ${category_name}");
 
-    // The category.
-    def cat = RefdataCategory.findByDesc(category_name);
-    if ( !cat ) {
-      cat = new RefdataCategory(desc:category_name)
-	  cat.save(failOnError:true)
-    }
+    RefdataValue.withTransaction { status ->
+      // The category.
+      def cat = RefdataCategory.findByDesc(category_name);
+      if ( !cat ) {
+        cat = new RefdataCategory(desc:category_name)
+        cat.save(failOnError:true)
+      }
 
-    // II Commented out the following - Seems to clash with domain class extender!
-    def result = RefdataValue.findByOwnerAndValueIlike(cat, value)
+      def result = RefdataValue.findByOwnerAndValueIlike(cat, value)
 	
-    // SO: Changed this slightly to do a case-insensitive value match.
-    //def result = RefdataValue.findAllWhere (owner:cat).find { RefdataValue val ->
-    //	  val.getValue().equalsIgnoreCase(value)
-    //	}
+      if ( !result ) {
+	// Create and save a new refdata value.
+        result = new RefdataValue(owner:cat, value:value, sortKey:sortkey)
+        result.save(failOnError:true, flush:true)
+      }
 
-    if ( !result ) {
-	  
-	  // Create and save a new refdata value.
-      result = new RefdataValue(owner:cat, value:value, sortKey:sortkey)
-      result.save(failOnError:true, flush:true)
+      // return the refdata value.
     }
 
-	// return the refdata value.
     result
   }
 
