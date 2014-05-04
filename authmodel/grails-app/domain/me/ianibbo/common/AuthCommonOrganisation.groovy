@@ -6,12 +6,18 @@ class AuthCommonOrganisation extends AuthCommonParty {
   String shortcode
   String url
   String pubScheme
+  String email
+  String twitter
+  String facebook
 
   static constraints = {
     status(nullable:false, blank:false)
     shortcode(nullable:false, blank:false, unique:true)
     url(nullable:true, blank:false)
     pubScheme(nullable:true, blank:true)
+    email(nullable:true, blank:true)
+    twitter(nullable:true, blank:true)
+    facebook(nullable:true, blank:true)
   }
 
   static mapping = {
