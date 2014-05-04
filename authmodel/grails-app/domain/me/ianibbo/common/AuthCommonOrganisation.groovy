@@ -22,6 +22,7 @@ class AuthCommonOrganisation extends AuthCommonParty {
 
   static mapping = {
     pubScheme type:'text'
+    shortcode index:'ap_shortcode'
   }
 
   static def refdataFind(params) {
