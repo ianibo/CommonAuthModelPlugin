@@ -6,7 +6,6 @@ class AuthCommonUser extends AuthCommonParty {
 
   String username
   String password
-  String email
   boolean enabled = true
   boolean accountExpired
   boolean accountLocked
@@ -22,7 +21,6 @@ class AuthCommonUser extends AuthCommonParty {
   static constraints = {
     username blank: false, unique: true
     password blank: false, nullable:false
-    email blank: true, nullable:true
     defaultPageSize blank: false, nullable:true
     showQuickView blank: false, nullable:true
     showInfoIcon blank: false, nullable:true
