@@ -1,6 +1,6 @@
 package me.ianibbo.common
 
-import org.hibernate.proxy.HibernateProxy
+// import org.hibernate.proxy.HibernateProxy
 
 class RefdataValue {
 
