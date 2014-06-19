@@ -4,14 +4,6 @@ import org.hibernate.proxy.HibernateProxy
 
 class RefdataValue {
 
-  public static <T> T deproxy(def element) {
-    if (element instanceof HibernateProxy) {
-      return (T) ((HibernateProxy) element).getHibernateLazyInitializer().getImplementation();
-    }
-    return (T) element;
-  }
-
-
   String value
   String icon
   String description
@@ -53,9 +45,8 @@ class RefdataValue {
   public boolean equals (Object obj) {
 
     if (obj != null) {
-      Object dep_obj = deproxy (obj)
-      if (dep_obj instanceof RefdataValue) {
-        return dep_obj.id == id
+      if (obj instanceof RefdataValue) {
+        return obj.id == id
       }
     }
 
