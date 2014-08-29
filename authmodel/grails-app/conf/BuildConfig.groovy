@@ -34,23 +34,26 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
         mavenRepo "http://repo.spring.io/milestone/"
+        mavenRepo "https://raw.github.com/fernandezpablo85/scribe-java/mvn-repo/"
 
     }
     dependencies {
       // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
       // runtime 'mysql:mysql-connector-java:5.1.27'
       runtime 'net.sf.opencsv:opencsv:2.0'
+
+      // Work around spring security dependency problem appeating with grails 2.4+
+      compile "net.sf.ehcache:ehcache-core:2.4.8"
     }
 
     plugins {
-        compile ":spring-security-core:2.0-RC2"
-        compile ":spring-security-ui:1.0-RC1"
-        compile ':spring-security-oauth:2.0.2'
-        compile ':spring-security-oauth-facebook:0.1'
-        compile ':spring-security-oauth-google:0.2'
+        compile ":spring-security-core:2.0-RC3"
+        compile ":spring-security-ui:1.0-RC2"
+        compile ':spring-security-oauth:2.1.0-RC4'
+        compile ':spring-security-oauth-facebook:0.2'
+        compile ':spring-security-oauth-google:0.3.1'
 
-        build(":release:3.0.1",
-              ":rest-client-builder:1.0.3") {
+        build(":release:3.0.1", ":rest-client-builder:1.0.3") {
             export = false
         }
     }
