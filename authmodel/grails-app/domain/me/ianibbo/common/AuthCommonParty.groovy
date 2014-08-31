@@ -8,6 +8,8 @@ class AuthCommonParty {
   String twitter
   String facebook
   Boolean emailConfirmed
+  String confirmationToken
+  Date confirmationSent
 
   static mapping = {
     table name:'auth_common_party', schema:'common'
@@ -21,6 +23,8 @@ class AuthCommonParty {
     twitter nullable:true, blank:true
     facebook nullable:true, blank:true
     emailConfirmed nullable:true, blank:true
+    confirmationToken nullable:true, blank:true
+    confirmationSent nullable:true, blank:true
   }
 
 }
